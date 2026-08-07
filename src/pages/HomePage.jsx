@@ -156,7 +156,7 @@ const Header = () => {
             <div className="mx-auto flex h-16 w-full max-w-[90rem] items-center justify-between gap-4 px-4 sm:px-8">
                <a href="#top" className="flex items-center">
                 <img
-                    src="../../public/logo.png"
+                    src="/logo.png"
                     alt="Antafex"
                     className="h-16 w-auto sm:h-20"
                 />
