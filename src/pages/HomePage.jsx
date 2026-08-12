@@ -69,9 +69,45 @@ const SERVICES = [
 
 const CASES = [
     {
+        image: '/venttium.jpg',
+        sector: 'Software · Gestión',
+        title: 'Todo tu negocio en un solo lugar',
+        text: 'Gestioná clientes, pedidos, productos, stock, cobros y operaciones desde una sola plataforma, potenciada con IA.',
+        metric: 'Venttium',
+        metricLabel: 'Tu negocio conectado',
+    },
+    {
+        image: 'https://images.hostinger.com/fd5b9929-1cdf-43d0-8a32-e1428fab3fae.png',
+        sector: 'Distribución · E-commerce',
+        title: 'Canal B2B con integración ERP en tiempo real',
+        text: 'Creamos tiendas y plataformas de e-commerce conectadas con tu negocio, con precios personalizados, stock, pedidos y pagos online.',
+        metric: '3,1x',
+        metricLabel: 'crecimiento en pedidos digitales',
+    },
+    {
+        image: 'https://images.hostinger.com/81369dc5-b1af-42c3-837f-8a51a0b84206.png',
+        sector: 'Inteligencia Artificial',
+        title: 'Agentes de IA que trabajan sobre tus procesos',
+        text: 'Diseñamos agentes conectados a tus datos, sistemas y herramientas para automatizar tareas, responder consultas y asistir a tus equipos.',
+        metric: 'AI',
+        metricLabel: 'Engineering',
+    },
+    {
+        image: 'https://images.hostinger.com/f3d4f5f3-bb1c-4990-ac98-b81451daf3a3.png',
+        sector: 'Software a medida',
+        title: 'Apps, sitios y plataformas para hacer crecer tu negocio',
+        text: 'Desarrollamos sitios web, aplicaciones y e-commerce a medida, integrados con las herramientas que ya utiliza tu empresa.',
+        metric: 'A medida',
+        metricLabel: 'para tu negocio',
+    },
+];
+
+/*
+const CASES = [
+    {
         image: 'https://images.hostinger.com/f3d4f5f3-bb1c-4990-ac98-b81451daf3a3.png',
         sector: 'Retail · Datos',
-        title: 'Un centro de datos único para 42 sucursales',
+        title: 'Un centro de datos único para toda la operación',
         text: 'Consolidamos inventario, ventas y logística en un warehouse con tableros diarios. El cierre mensual pasó de 9 días a 6 horas.',
         metric: '87%',
         metricLabel: 'menos tiempo en reportería',
@@ -92,7 +128,7 @@ const CASES = [
         metric: '3,1x',
         metricLabel: 'crecimiento en pedidos digitales',
     },
-];
+]; */
 
 const STEPS = [
     { n: '01', t: 'Diagnóstico', d: 'Dos semanas para entender procesos, datos y prioridades reales del negocio.' },
@@ -120,6 +156,8 @@ const SERVICE_OPTIONS = [
     { value: 'otro', label: 'Otro' },
 ];
 
+const CONTACT_NOTIFICATION_ENDPOINT = 'https://formsubmit.co/ajax/antafex@gmail.com';
+
 const inputClass =
     'w-full rounded-md border border-border bg-background/70 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-primary/70 focus:ring-2 focus:ring-primary/25';
 
@@ -142,7 +180,7 @@ const NavItem = ({ item, onNavigate }) => (
         }}
         whileTap={{ scale: 0.94 }}
         transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+        className="text-base text-muted-foreground transition-colors hover:text-foreground"
     >
         {item.label}
     </motion.a>
@@ -158,7 +196,7 @@ const Header = () => {
                 <img
                     src="/logo.png"
                     alt="Antafex"
-                    className="h-16 w-auto sm:h-20"
+                    className="h-16 w-auto sm:h-40"
                 />
                 </a>
                 <nav className="hidden items-center gap-8 md:flex">
@@ -170,7 +208,7 @@ const Header = () => {
                     <a
                         href="#contacto"
                         onClick={(e) => { e.preventDefault(); smoothScrollTo('#contacto'); }}
-                        className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:brightness-110 active:scale-[0.98] sm:inline-flex"
+                        className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-base font-semibold text-primary-foreground transition-transform hover:brightness-110 active:scale-[0.98] sm:inline-flex"
                     >
                         Agendar diagnóstico
                     </a>
@@ -197,7 +235,7 @@ const Header = () => {
                             }}
                             whileTap={{ scale: 0.96 }}
                             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-                            className="block border-b border-white/5 py-4 text-base text-muted-foreground"
+                            className="block border-b border-white/5 py-4 text-lg text-muted-foreground"
                         >
                             {item.label}
                         </motion.a>
@@ -205,7 +243,7 @@ const Header = () => {
                     <a
                         href="#contacto"
                         onClick={(e) => { e.preventDefault(); smoothScrollTo('#contacto'); setOpen(false); }}
-                        className="mt-4 block rounded-md bg-primary px-4 py-3.5 text-center text-sm font-semibold text-primary-foreground"
+                        className="mt-4 block rounded-md bg-primary px-4 py-3.5 text-center text-base font-semibold text-primary-foreground"
                     >
                         Agendar diagnóstico
                     </a>
@@ -312,15 +350,19 @@ const Hero = () => (
 
 const Marquee = () => (
     <div className="overflow-hidden border-y border-white/10 bg-secondary/40 py-4">
-        <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
-            {[...MARQUEE, ...MARQUEE].map((item, i) => (
-                <span
-                    key={`${item}-${i}`}
-                    className="flex items-center gap-10 text-sm uppercase tracking-[0.2em] text-muted-foreground"
-                >
-                    {item}
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                </span>
+        <div className="flex w-max animate-marquee whitespace-nowrap">
+            {[0, 1].map((group) => (
+                <div key={group} aria-hidden={group === 1} className="flex shrink-0 gap-10 pr-10">
+                    {MARQUEE.map((item) => (
+                        <span
+                            key={`${item}-${group}`}
+                            className="flex items-center gap-10 text-sm uppercase tracking-[0.2em] text-muted-foreground"
+                        >
+                            {item}
+                            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                        </span>
+                    ))}
+                </div>
             ))}
         </div>
     </div>
@@ -376,7 +418,7 @@ const Portfolio = () => (
             <Reveal>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Portafolio</p>
                 <h2 className="mt-4 max-w-3xl text-balance font-display text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
-                    Resultados medibles, no entregables decorativos
+                    Resultados medibles
                 </h2>
             </Reveal>
             <div className="mt-14 space-y-6">
@@ -481,12 +523,41 @@ const Contact = () => {
         setStatus('loading');
         setError('');
         try {
-            await pb.collection('contact_requests').create(form);
+            const selectedService = SERVICE_OPTIONS.find((option) => option.value === form.service);
+            const notification = {
+                _subject: `Nueva solicitud de ${form.name} - Antafex`,
+                _template: 'table',
+                _replyto: form.email,
+                nombre: form.name,
+                correo: form.email,
+                empresa: form.company || 'No informado',
+                telefono: form.phone || 'No informado',
+                servicio: selectedService?.label ?? form.service,
+                mensaje: form.message,
+            };
+
+            const emailResponse = await fetch(CONTACT_NOTIFICATION_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify(notification),
+            });
+            const emailResult = await emailResponse.json().catch(() => null);
+
+            if (!emailResponse.ok || emailResult?.success === 'false' || emailResult?.success === false) {
+                throw new Error(emailResult?.message || 'No se pudo enviar la notificación por correo.');
+            }
+
+            // El correo es la acción principal. No impedimos que el usuario reciba la confirmación
+            // si el registro auxiliar de PocketBase está temporalmente indisponible.
+            pb.collection('contact_requests').create(form).catch(() => undefined);
             setStatus('done');
             setForm({ name: '', email: '', company: '', phone: '', service: 'software', message: '' });
         } catch (err) {
             setStatus('idle');
-            setError('No pudimos enviar su mensaje. Intente de nuevo o escríbanos a antafex@gmail.com.');
+            setError(err.message || 'No pudimos enviar su mensaje. Intente de nuevo o escríbanos a antafex@gmail.com.');
         }
     };
 
