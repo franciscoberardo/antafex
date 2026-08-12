@@ -79,7 +79,7 @@ const CASES = [
     {
         image: 'https://images.hostinger.com/fd5b9929-1cdf-43d0-8a32-e1428fab3fae.png',
         sector: 'Distribución · E-commerce',
-        title: 'Canal B2B con integración ERP en tiempo real',
+        title: 'Vendé online. Crecé sin límites.',
         text: 'Creamos tiendas y plataformas de e-commerce conectadas con tu negocio, con precios personalizados, stock, pedidos y pagos online.',
         metric: '3,1x',
         metricLabel: 'crecimiento en pedidos digitales',
